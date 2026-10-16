@@ -7,6 +7,11 @@ function Personaje({ nombre, vida, ataque, atacar }) {
       <h1>{nombre}</h1>
       <p>Vida: {vida}</p>
       <p>Ataque: {ataque}</p>
+      <p>{vida === 0 ? "Estado: Derrotado" : vida <= 30 ? "Estado: Herido" : "Estado: Activo"}</p>
+      {vida === 0 && <p>Este personaje ha sido derrotado</p>}
+      {vida <= 30 && vida > 0 && <p>Este personaje está herido</p>}
+      {vida > 0 && vida <= 30 && <p>¡Cuidado! Le queda poca vida</p>}
+      {vida > 30 && vida <= 100 && <p>El personaje está en buenas condiciones</p>}
 
       <button onClick={atacar} disabled={vida === 0}>
         {vida === 0 ? "Derrotado" : "Atacar"}
