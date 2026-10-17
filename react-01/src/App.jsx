@@ -22,6 +22,8 @@ function Personaje({ nombre, vida, ataque, atacar }) {
 
 function App() {
 
+  const [contador, setContador] = useState(0)
+
   const [personajes, setPersonajes] = useState([
     { nombre: "Guerrero", vida: 100, ataque: 20, mensaje: "" },
     { nombre: "Mago", vida: 80, ataque: 15, mensaje: "" },
@@ -52,9 +54,35 @@ function App() {
 
   return (
     <>
+      <p>Contador: {contador}</p>
+      <button onClick={function () {
+        setContador(function (valorAnterior) {
+          return valorAnterior + 1
+        })
+      }}>
+        Sumar
+      </button>
+
+      <button onClick={function () {
+        setContador(function (valorAnterior) {
+          if (valorAnterior <= 0) {
+            return 0
+          }
+          return valorAnterior - 1
+        })
+      }}>
+        Restar
+      </button>
+
+      <button onClick={function () {
+        setContador(0)
+      }}>
+        Reiniciar
+      </button>
+
       <h2>Lista de personajes</h2>
 
-      {personajes.map(function (personaje) {
+      {personajes.map(function (personaje) { 
         let objetivo = ""
 
         if (personaje.nombre === "Guerrero") {
