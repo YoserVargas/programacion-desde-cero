@@ -22,6 +22,8 @@ function Personaje({ nombre, vida, ataque, atacar }) {
 
 function App() {
 
+  const [nombre, setNombre] = useState("")
+
   const [contador, setContador] = useState(0)
 
   const [personajes, setPersonajes] = useState([
@@ -79,6 +81,26 @@ function App() {
       }}>
         Reiniciar
       </button>
+
+      <h2>Escribe tu nombre</h2>
+
+      <input
+        type="text"
+        value={nombre}
+        onChange={function (evento) {
+          setNombre(evento.target.value)
+        }}
+      />
+
+      <p>{nombre === "" ? "Escribe tu nombre" : "Tu nombre es: " + nombre}</p>
+
+      <button onClick={function () {
+        setNombre("")
+      }}>
+        Borrar nombre
+      </button>
+
+      <p>Caracteres: {nombre.length}</p>
 
       <h2>Lista de personajes</h2>
 
