@@ -22,6 +22,8 @@ function Personaje({ nombre, vida, ataque, atacar }) {
 
 function App() {
 
+  const tareas = ["Estudiar React", "Practicar JavaScript", "Subir proyecto a GitHub", "Aprender componentes"]
+
   const [nombre, setNombre] = useState("")
 
   const [contador, setContador] = useState(0)
@@ -101,6 +103,12 @@ function App() {
       </button>
 
       <p>Caracteres: {nombre.length}</p>
+
+      <h2>Mis tareas</h2>
+
+      {tareas.map(function (tarea) {
+        return <p key={tarea}>{tarea}</p>
+      })}
 
       <h2>Lista de personajes</h2>
 
