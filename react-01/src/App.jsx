@@ -35,6 +35,13 @@ function App() {
     { nombre: "Ladron", vida: 70, ataque: 30, mensaje: "" }
   ])
 
+
+  const personajesEjemplo = [
+  { nombre: "Guerrero", vida: 100, ataque: 20 },
+  { nombre: "Mago", vida: 80, ataque: 15 },
+  { nombre: "Arquero", vida: 90, ataque: 25 }
+]
+
   function atacarPersonaje(atacante, objetivo, damage) {
     setPersonajes(function (prevPersonajes) {
       return prevPersonajes.map(function (personaje) {
@@ -108,6 +115,13 @@ function App() {
 
       {tareas.map(function (tarea) {
         return <p key={tarea}>{tarea}</p>
+      })}
+
+
+      <h2>Personajes de prueba</h2>
+
+      {personajesEjemplo.map(function (personaje) {
+        return <p key={personaje.nombre}>{personaje.nombre}: Vida: {personaje.vida}, Ataque: {personaje.ataque}</p>
       })}
 
       <h2>Lista de personajes</h2>
