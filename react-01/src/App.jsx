@@ -35,11 +35,16 @@ function App() {
     { nombre: "Ladron", vida: 70, ataque: 30, mensaje: "" }
   ])
 
-
   const personajesEjemplo = [
   { nombre: "Guerrero", vida: 100, ataque: 20 },
   { nombre: "Mago", vida: 80, ataque: 15 },
   { nombre: "Arquero", vida: 90, ataque: 25 }
+]
+
+const personajesNuevos = [
+  { nombre: "Paladín", vida: 120, ataque: 18 },
+  { nombre: "Hechicera", vida: 75, ataque: 30 },
+  { nombre: "Ninja", vida: 85, ataque: 27 }
 ]
 
   function atacarPersonaje(atacante, objetivo, damage) {
@@ -61,6 +66,10 @@ function App() {
         return personaje
       })
     })
+  }
+
+  function realizarAtaque() {
+    alert("¡El Guerrero atacó!")
   }
 
   return (
@@ -107,6 +116,8 @@ function App() {
       <TarjetaPersonaje nombre="Guerrero" vida={100} ataque={20} />
       <TarjetaPersonaje nombre="Mago" vida={80} ataque={15} />
 
+      <BotonAtaque atacar={realizarAtaque} />
+    
       <button onClick={function () {
         setNombre("")
       }}>
@@ -179,5 +190,13 @@ function TarjetaPersonaje(props) {
       <p>Vida: {props.vida}</p>
       <p>Ataque: {props.ataque}</p>
     </div>
+  )
+}
+
+function BotonAtaque(props) {
+  return (
+    <button onClick={props.atacar}>
+      Atacar
+    </button>
   )
 }
