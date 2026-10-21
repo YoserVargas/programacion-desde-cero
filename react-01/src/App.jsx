@@ -128,6 +128,17 @@ function App() {
         return <p key={personaje.nombre}>{personaje.nombre}: Vida: {personaje.vida}, Ataque: {personaje.ataque}</p>
       })}
 
+      {personajesNuevos.map(function (personaje) {
+        return (
+          <TarjetaPersonaje
+            key={personaje.nombre}
+            nombre={personaje.nombre}
+            vida={personaje.vida}
+            ataque={personaje.ataque}
+          />
+        )
+      })}
+
       <h2>Lista de personajes</h2>
 
       {personajes.map(function (personaje) { 
