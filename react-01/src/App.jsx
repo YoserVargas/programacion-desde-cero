@@ -100,8 +100,12 @@ function App() {
           setNombre(evento.target.value)
         }}
       />
-
       <p>{nombre === "" ? "Escribe tu nombre" : "Tu nombre es: " + nombre}</p>
+
+
+      <h2>Mi componente</h2>
+      <TarjetaPersonaje nombre="Guerrero" vida={100} ataque={20} />
+      <TarjetaPersonaje nombre="Mago" vida={80} ataque={15} />
 
       <button onClick={function () {
         setNombre("")
@@ -156,3 +160,13 @@ function App() {
 }
 
 export default App
+
+function TarjetaPersonaje(props) {
+  return (
+    <div>
+      <h3>{props.nombre}</h3>
+      <p>Vida: {props.vida}</p>
+      <p>Ataque: {props.ataque}</p>
+    </div>
+  )
+}
