@@ -22,6 +22,12 @@ function Personaje({ nombre, vida, ataque, atacar }) {
 
 function App() {
 
+  const [personajesFinales, setPersonajesFinales] = useState([
+    { nombre: "Guerrero", vida: 60 },
+    { nombre: "Mago", vida: 100 },
+    { nombre: "Arquero", vida: 25 }
+  ])
+
   const tareas = ["Estudiar React", "Practicar JavaScript", "Subir proyecto a GitHub", "Aprender componentes"]
 
   const [nombre, setNombre] = useState("")
@@ -71,6 +77,23 @@ const personajesNuevos = [
   function realizarAtaque() {
     alert("¡El Guerrero atacó!")
   }
+
+  function curarPersonaje(nombre) {
+    setPersonajesFinales(function (healPersonajes) {
+      return healPersonajes.map(function (personaje) {
+
+        if (personaje.nombre === nombre) {
+          const nuevaVida = Math.min(100, personaje.vida + 10)
+          return {
+            ...personaje,
+            vida: nuevaVida
+          }       
+        }
+        return personaje
+      })
+    })
+  }
+      
 
   return (
     <>
@@ -126,12 +149,29 @@ const personajesNuevos = [
 
       <p>Caracteres: {nombre.length}</p>
 
+      <h2>TarjetaFinal</h2>
+      {personajesFinales.map(function (personaje) {
+        return <div>
+          <h1>{personaje.nombre}</h1>
+          <p>Vida: {personaje.vida}</p>
+          <p>{personaje.vida === 0 ? "Estado: Derrotado" : personaje.vida <= 30 ? "Estado: Herido" : "Estado: Activo"}</p>
+          {personaje.vida === 0 && <p>Este personaje ha sido derrotado</p>}
+          {personaje.vida <= 30 && personaje.vida > 0 && <p>Este personaje está herido</p>}
+          {personaje.vida > 30 && personaje.vida <= 100 && <p>El personaje está en buenas condiciones</p>}
+
+      <button onClick={function () {
+        curarPersonaje(personaje.nombre)
+      }}>
+        Curar +10
+      </button>
+        </div>
+      })}
+
       <h2>Mis tareas</h2>
 
       {tareas.map(function (tarea) {
         return <p key={tarea}>{tarea}</p>
       })}
-
 
       <h2>Personajes de prueba</h2>
 
